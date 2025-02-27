@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ANDGate : MonoBehaviour
+public class LogicGate : MonoBehaviour
 {
     public Renderer inputA;
     public Renderer inputB;  
@@ -21,6 +21,7 @@ public class ANDGate : MonoBehaviour
     void Update()
     {
         bool outputState = isInputAActive && isInputBActive;
+        
         SetColor(output, outputState ? Color.green : Color.red);
     }
 
@@ -44,4 +45,18 @@ public class ANDGate : MonoBehaviour
         if (renderer != null)
             renderer.material.color = color;
     }
+
+    public void SetInput(string inputName, bool state)
+{
+    if (inputName == "A")
+    {
+        isInputAActive = state;
+        SetColor(inputA, state ? Color.green : Color.red);
+    }
+    else if (inputName == "B")
+    {
+        isInputBActive = state;
+        SetColor(inputB, state ? Color.green : Color.red);
+    }
+}
 }
